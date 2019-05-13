@@ -22,11 +22,11 @@ information_retrieval() {
 
 check_file_existence() {
     checker=`ls -l $1 | grep "$2" | awk '{print $9}'`
-    if [[ "$checker" != "$3" ]]; then 
+    if [[ "$checker" != "$3" ]]; then
         echo 0
     elif [[ "$checker" == "$3" ]]; then
         echo 1
-    fi 
+    fi
 }
 
 add_data() {
@@ -40,7 +40,7 @@ add_data() {
     for ((i=1; i<= `getMaxLine $oriName`; ++i)); do
         curr_line=`cat $oriName | sed -n "$i"p | sed 's/,/'"$symbol1"'/g'`
         echo INSERT INTO $3 VALUES \( \' $curr_line \' \)\;  >> $newFile
-    done  
+    done
 }
 
 information_retrieval dir file table
