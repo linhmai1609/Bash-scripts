@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ssh mlbl@192.168.100.165
+
+sudo -u postgres
+
+list_all_databases() {
+    psql 
+    \l
+}
+
+create_schedule() {
+    echo "$1 $2 $3 $4 $5 pg_dump -U postgres $6 > ~/postgres/backups/$6.sql" >> 
+}
